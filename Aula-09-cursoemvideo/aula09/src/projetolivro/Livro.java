@@ -9,6 +9,9 @@ public class Livro implements Publicacao {
     private Integer totPaginas;
     private Integer pagAtual;
     private Boolean aberto;
+    private Integer idadeParaLeitura;
+    private String generoParaLeitura;
+    private Boolean podeLerLivro;
     
     //Métodos Principais
 
@@ -20,17 +23,56 @@ public class Livro implements Publicacao {
  */
 
     //Método Construtor
-    public Livro(String titulo, String autor, Pessoa leitor, Integer totPaginas) {
+    public Livro(String titulo, String autor, Pessoa leitor, Integer totPaginas, String generoParaLeitura, Integer idadeParaLeitura) {
         this.titulo = titulo;
         this.autor = autor;
         this.leitor = leitor;
         this.totPaginas = totPaginas;
         this.pagAtual = 0;
         this.aberto = false;
+	setGeneroParaLeitura(generoParaLeitura);
+    setIdadeParaLeitura(idadeParaLeitura);
     }
     
     //Métodos Especiais
     
+    public void setIdadeParaLeitura(Integer idadeParaLeitura) {
+        this.idadeParaLeitura = idadeParaLeitura;
+        if (leitor.getIdade() > this.getIdadeParaLeitura() || this.getIdadeParaLeitura() == 0) {
+            this.podeLerLivro = true;
+        } else {
+            this.podeLerLivro = false;
+        }    
+    }
+
+    public Integer getIdadeParaLeitura() {
+        return idadeParaLeitura;
+    }
+
+//      Se o genero do leitor for X, pode ler qualquer um
+//  	Se o genero do leitor for igual o livro, pode ler
+
+    public void setGeneroParaLeitura(String generoParaLeitura) {
+        this.generoParaLeitura = generoParaLeitura;
+        if ("X".equals(leitor.getGenero()) || leitor.getGenero().equals(getGeneroParaLeitura())) {
+            this.podeLerLivro = true;
+        } else {
+            this.podeLerLivro = false;
+        }
+    }
+
+    public String getGeneroParaLeitura() {
+        return generoParaLeitura;
+    }
+
+    public void setPodeLerLivro(Boolean podeLerLivro) {
+        this.podeLerLivro = podeLerLivro;
+    }
+
+    public Boolean getPodeLerLivro() {
+        return podeLerLivro;
+    }
+
     public String detalhes() {
         return "Livro [aberto=" + aberto + ", autor=" + autor +  ", pagAtual=" + pagAtual
                 + ", titulo=" + titulo + ", totPaginas=" + totPaginas + "\n, leitor=" + leitor.getNome() + ", idade do leitor=" + leitor.getIdade() + ", gênero do leitor=" + leitor.getGenero() + "]" ;
@@ -71,10 +113,14 @@ public class Livro implements Publicacao {
 
         @Override
         public void abrir() {
-            if (!this.aberto || this.aberto == null) {
+            if (this.podeLerLivro == true) {
+                if (!this.aberto || this.aberto == null) {
                 this.aberto = true;
-            } else {
+                } else {
                 System.err.println("O livro já está aberto.");
+                }
+            } else {
+                System.err.println("Essa pessoa não pode ler este livro");
             }
         }
 
@@ -135,106 +181,7 @@ public class Livro implements Publicacao {
     //Aberto não será constrúido pois quando instânciado estará fechado
     //PagAtual também não será construído pois estará com 0
 
-/* Implementação da idade e gênero para leitura (Branch condicoes-para-leitura)
-
-//Atributos
-    private Integer idadeParaLeitura;
-    private String generoParaLeitura;
-    private Boolean podeLerLivro;
-
-//Método Construtor
-
-    public Livro(String titulo, String autor, Pessoa leitor, Integer totPaginas, String generoParaLeitura, Integer idadeParaLeitura) {
-        this.titulo = titulo;
-        this.autor = autor;
-        this.leitor = leitor;
-        this.totPaginas = totPaginas;
-        this.pagAtual = 0;
-        this.aberto = false;
-	setGeneroParaLeitura(generoParaLeitura);
-        setIdadeParaLeitura(idadeParaLeitura);
-
-    }
-
-//Métodos Especiais
-
-        public void setIdadeParaLeitura(Integer idadeParaLeitura) {
-            this.idadeParaLeitura = idadeParaLeitura;
-            if (leitor.getIdade() < idadeParaLeitura) {
-                System.err.println("Idade inapropriada para leitura");
-                this.podeLerLivro = false;
-            } else {
-                this.podeLerLivro = true;
-            }
-        }
-
-        public Integer getIdadeParaLeitura() {
-            return idadeParaLeitura;
-        }
-
-        public void setGeneroParaLeitura(String generoParaLeitura) {
-            this.generoParaLeitura = generoParaLeitura;
-            if (leitor.getGenero().equals(this.generoParaLeitura)) {
-                this.podeLerLivro = true;
-            } else {
-                System.err.println("Não é o público alvo para leitura");
-                this.podeLerLivro = false;
-            }
-        }
-
-        public String getGeneroParaLeitura() {
-            return generoParaLeitura;
-        }
- 
-        public void setPodeLerLivro(Boolean podeLerLivro) {
-            this.podeLerLivro = podeLerLivro;
-        }
-
-        public Boolean getPodeLerLivro() {
-            return podeLerLivro;
-        }
-
-
-//Override método abstrato da interface
-
-        @Override
-        public void abrir() {
-            if (this.podeLerLivro == true) {
-                if (!this.aberto || this.aberto == null) {
-                this.aberto = true;
-                } else {
-                System.err.println("O livro já está aberto.");
-                }
-            } else {
-                System.err.println("Essa pessoa não pode ler este livro");
-            }
-        }
-
-//Aumentar Array
-
-	Livro[] l = new Livro[5]; 
-
-//Livros extras para a classe Main
-	
-	//Adicionar "X", 0 nos outros livros
-        l[3] = new Livro("Como ser uma mulher mais produtiva", "Universo Feminino", p[0], 350, "F", 18);
-        l[4] = new Livro("Seja um macho alfa", "Homens Barbudos", p[1], 350, "M", 18);
-
-/*Ideia:
-	if ("X".equals(leitor.getGenero()) || leitor.getGenero().equals(getGeneroParaLeitura())) {
-		this.podeLerLivro == true;
-	} else {
-		this.podeLerLivro == false;
-	}
-	Se o genero do leitor for X, pode ler qualquer um
-	Se o genero do leitor for igual o livro, pode ler
-
-	if (leitor.getIdade() > this.getIdadeParaLeitura() || "0".equals(this.getIdadeParaLeitura())) {
-		this.podeLerLivro == true;
-	} else {
-		this.podeLerLivro == false;
-	}
-*/
+// Implementação da idade e gênero para leitura (Branch condicoes-para-leitura)
 
     //Fim da classe
 }

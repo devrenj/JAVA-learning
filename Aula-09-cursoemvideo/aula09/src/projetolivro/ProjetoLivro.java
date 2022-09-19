@@ -3,14 +3,17 @@ package projetolivro;
 public class ProjetoLivro {
     public static void main(String[] args) {
         Pessoa[] p = new Pessoa[2];
-        Livro[] l = new Livro[3];
+        Livro[] l = new Livro[5]; 
 
         p[0] = new Pessoa("Roberto", 30, "M");
         p[1] = new Pessoa("Ana", 59, "F");
         
-        l[0] = new Livro("Aprendendo Java", "Guanabarinha", p[0], 300);
-        l[1] = new Livro("POO para iniciantes", "Gafanhotos", p[1], 500);
-        l[2] = new Livro("Arte de Vencer", "Roberto Nóbrega", p[0], 250);
+        l[0] = new Livro("Aprendendo Java", "Guanabarinha", p[0], 300, "X", 0);
+        l[1] = new Livro("POO para iniciantes", "Gafanhotos", p[1], 500, "X", 0);
+        l[2] = new Livro("Arte de Vencer", "Roberto Nóbrega", p[0], 250, "X", 0);
+        l[3] = new Livro("Como ser uma mulher mais produtiva", "Universo Feminino", p[0], 350, "F", 18);
+        l[4] = new Livro("Seja um macho alfa", "Homens Barbudos", p[1], 350, "M", 18);
+
 
         l[0].abrir();
         l[0].folhear(10);
