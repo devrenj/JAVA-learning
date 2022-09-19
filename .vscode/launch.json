@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ProjetoPessoas",
+            "request": "launch",
+            "mainClass": "projetopessoas.ProjetoPessoas",
+            "projectName": "JAVA-learning_401b6249"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
