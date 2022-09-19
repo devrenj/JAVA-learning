@@ -19,11 +19,21 @@ public class Livro implements Publicacao {
         }
  */
 
+    //Método Construtor
+    public Livro(String titulo, String autor, Pessoa leitor, Integer totPaginas) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.leitor = leitor;
+        this.totPaginas = totPaginas;
+        this.pagAtual = 0;
+        this.aberto = false;
+    }
+    
     //Métodos Especiais
     
     public String detalhes() {
-        return "Livro [aberto=" + aberto + ", autor=" + autor + ", leitor=" + leitor + ", pagAtual=" + pagAtual
-                + ", titulo=" + titulo + ", totPaginas=" + totPaginas + "]";
+        return "Livro [aberto=" + aberto + ", autor=" + autor +  ", pagAtual=" + pagAtual
+                + ", titulo=" + titulo + ", totPaginas=" + totPaginas + "\n, leitor=" + leitor.getNome() + ", idade do leitor=" + leitor.getIdade() + ", gênero do leitor=" + leitor.getGenero() + "]" ;
     }
     
         public void setTitulo(String titulo) {
@@ -63,6 +73,8 @@ public class Livro implements Publicacao {
         public void abrir() {
             if (!this.aberto || this.aberto == null) {
                 this.aberto = true;
+            } else {
+                System.err.println("O livro já está aberto.");
             }
         }
 
@@ -70,25 +82,56 @@ public class Livro implements Publicacao {
         public void fechar() {
             if (this.aberto) {
                 this.aberto = false;
+            } else {
+                System.err.println("O livro já está fechado.");
+            }
+        }
+        
+
+        @Override
+        public void folhear(int p) {
+            if (this.aberto){    
+                if (p > totPaginas) {
+                    System.err.println("ERRO: Total de páginas excedido.");
+                    this.pagAtual = 0;
+                } else if (!this.aberto) {
+                    System.err.println("ERRO: O livro está fechado, impossível folhear");
+                } else {
+                    this.pagAtual = p;
+                }
             }
         }
 
         @Override
-        public void folhear() {
-            // TODO Auto-generated method stub
-            
-        }
-
-        @Override
         public void avancarPag() {
-            this.pagAtual++;
+            if (this.aberto && pagAtual < totPaginas) {
+                this.pagAtual++;
+            } else {
+                System.err.println("ERRO: Impossível avançar página");
+            }
         }
 
         @Override
         public void voltarPag() {
-            this.pagAtual--;    
+            if (this.aberto && pagAtual > 0) {
+                this.pagAtual--;    
+            } else {
+                System.err.println("ERRO: Impossível voltar página");
+            }
         }
 
+        @Override
+        public void localizarPag() {
+            if (pagAtual.equals(totPaginas)) {
+                System.err.println("Última página");
+                } else if (pagAtual == totPaginas / 2) {
+                System.err.println("Metade do livro");
+                } else if (pagAtual == 1) {
+                System.err.println("Primeira página");
+                }
+        }
+
+        
     //Aberto não será constrúido pois quando instânciado estará fechado
     //PagAtual também não será construído pois estará com 0
 

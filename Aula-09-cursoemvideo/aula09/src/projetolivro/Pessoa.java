@@ -5,8 +5,16 @@ public class Pessoa {
     //Atributos
     private String nome;
     private Integer idade;
-    private Boolean genero;
+    private String genero;
     
+    //Método Contrutor
+
+    public Pessoa(String nome, Integer idade, String genero) {
+        this.nome = nome;
+        this.idade = idade;
+        this.genero = genero;
+    }
+
     //Métodos Principais
     
         public void fazerAniver() {
@@ -32,13 +40,14 @@ public class Pessoa {
             return idade;
         }
     
-        public void setGenero(Boolean genero) {
+        public void setGenero(String genero) {
             this.genero = genero;
         }
     
-        public Boolean getGenero() {
+        public String getGenero() {
             return genero;
-        }	
+        }
+
     
     //Fim da classe
 }
