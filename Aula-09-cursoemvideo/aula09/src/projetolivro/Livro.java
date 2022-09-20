@@ -35,7 +35,7 @@ public class Livro implements Publicacao {
         return "Livro [aberto=" + aberto + ", autor=" + autor +  ", pagAtual=" + pagAtual
                 + ", titulo=" + titulo + ", totPaginas=" + totPaginas + "\n, leitor=" + leitor.getNome() + ", idade do leitor=" + leitor.getIdade() + ", gênero do leitor=" + leitor.getGenero() + "]" ;
     }
-    
+
         public void setTitulo(String titulo) {
             this.titulo = titulo;
         }
@@ -71,11 +71,11 @@ public class Livro implements Publicacao {
 
         @Override
         public void abrir() {
-            if (!this.aberto || this.aberto == null) {
+                if (!this.aberto || this.aberto == null) {
                 this.aberto = true;
-            } else {
+                } else {
                 System.err.println("O livro já está aberto.");
-            }
+                }
         }
 
         @Override
@@ -132,8 +132,8 @@ public class Livro implements Publicacao {
         }
 
         
-    //Aberto não será constrúido pois quando instânciado estará fechado
-    //PagAtual também não será construído pois estará com 0
+    //get/setAberto não será constrúido pois quando instânciado estará fechado
+    //get/setPagAtual também não será construído pois estará com 0
 
     //Fim da classe
 }
