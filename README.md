@@ -15,7 +15,7 @@
    4. Classe MAIN ProjetoLivro.java
    5. **Criada branch condicoes-para-leitura**
 
-2. Aula #10b de POO JAVA - CLASSE ABSTRATA, INTERCOMUNICAÇÃO ENTRE CLASSES `Extends`, HIERARQUIA ENTRE CLASSES E ALTERAÇÃO DE ATRIBUTOS POR MÉTODOS GETTERS AND SETTERS
+2. Aula #10b de POO JAVA - CLASSE ABSTRATA, INTERCOMUNICAÇÃO ENTRE CLASSES `Extends`, HIERARQUIA ENTRE CLASSES E ALTERAÇÃO DE ATRIBUTOS POR MÉTODOS `GETTERS AND SETTERS`
    1. Class Aluno.java
    1. Class Funcionario.java
    1. Class Abstrata Pessoa.java
