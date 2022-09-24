@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ProjetoYTB",
+            "request": "launch",
+            "mainClass": "aula14.ProjetoYTB",
+            "projectName": "JAVA-learning_401b6249"
+        },
+        {
+            "type": "java",
             "name": "Launch Aula13",
             "request": "launch",
             "mainClass": "aula13.Aula13",
