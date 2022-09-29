@@ -1,10 +1,12 @@
 package aula12;
-public class Canguru extends Mamifero {
+public final class Canguru extends Mamifero {
     
-    public Canguru() {
-        this.superCondicaoNome = "pulando forte";
+    
+    
+    public Canguru(float peso, int idade, int membros, String especieAnimal, String nome, String corDoPelo) {
+        super(peso, idade, membros, especieAnimal, nome, corDoPelo);
     }
-    
+
     @Override
     public void locomover() {
         this.usarSuperCondicao(this.getSuperCondicaoNome());

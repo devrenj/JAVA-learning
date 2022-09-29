@@ -1,6 +1,6 @@
 package aula12;
 
-public class Peixe extends Animal {
+public abstract class Peixe extends Animal {
 
     private String corEscama;
 
@@ -8,6 +8,11 @@ public class Peixe extends Animal {
         System.out.println("Soltando bolhas");
     }
     
+    public Peixe(float peso, int idade, int membros, String especieAnimal, String nome, String corEscama) {
+        super(peso, idade, membros, especieAnimal, nome);
+        this.corEscama = corEscama;
+    }
+
     @Override
     public void alimentar() {
         System.out.println("Comendo substâncias");    

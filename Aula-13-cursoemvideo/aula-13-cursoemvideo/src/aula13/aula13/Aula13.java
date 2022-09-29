@@ -21,6 +21,8 @@ public class Aula13 {
         c.reagir("oi toto");
         c.reagir("Cachorro");
         l.reagir("oi toto");    //Foi apenas uma piadinha :D
+        sc.close();
+        scint.close();
 
 }
     //Acho muito útil para testes de console

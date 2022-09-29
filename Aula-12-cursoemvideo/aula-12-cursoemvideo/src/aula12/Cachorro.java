@@ -1,10 +1,10 @@
 package aula12;
-public class Cachorro extends Mamifero {
+public final class Cachorro extends Mamifero {
 
-    public Cachorro() {
-        this.superCondicaoNome = "correndo";
+        public Cachorro(float peso, int idade, int membros, String especieAnimal, String nome, String corDoPelo) {
+        super(peso, idade, membros, especieAnimal, nome, corDoPelo);
     }
-
+    
     @Override
     public void locomover() {
         usarSuperCondicao(this.getSuperCondicaoNome());

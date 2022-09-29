@@ -1,4 +1,5 @@
 package aula13;
+
 public class Mamifero extends Animal {
     protected String corDoPelo;
 

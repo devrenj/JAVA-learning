@@ -1,8 +1,13 @@
 package aula12;
 
-public class Mamifero extends Animal {
+public abstract class Mamifero extends Animal {
 
     private String corDoPelo;
+
+    public Mamifero(float peso, int idade, int membros, String especieAnimal, String nome, String corDoPelo) {
+        super(peso, idade, membros, especieAnimal, nome);
+        this.corDoPelo = corDoPelo;
+    }
 
     @Override
     public void alimentar() {

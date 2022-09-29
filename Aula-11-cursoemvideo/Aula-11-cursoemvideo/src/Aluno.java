@@ -1,5 +1,3 @@
-import javax.lang.model.type.NullType;
-
 public class Aluno extends Pessoa {
     private int matricula;
     protected String curso;

@@ -5,6 +5,17 @@ public abstract class Animal {
     protected int membros;
     protected int superCondicao;
     protected String superCondicaoNome;
+    protected String especieAnimal;
+    protected String nome;
+       
+    
+    public Animal(float peso, int idade, int membros, String especieAnimal, String nome) {
+        this.peso = peso;
+        this.idade = idade;
+        this.membros = membros;
+        this.especieAnimal = especieAnimal;
+        this.nome = nome;
+    }
 
     public String getSuperCondicaoNome() {
         return superCondicaoNome;
@@ -38,7 +49,10 @@ public abstract class Animal {
         }
     }
 
-    public abstract void locomover();
+    public void locomover() {
+        System.out.println(n()+" está se movimentando com suas "+getMembros()+" patas");
+    }
+
     public abstract void alimentar();
     public abstract void emitirSom();
 
@@ -50,6 +64,11 @@ public abstract class Animal {
     public String nome(){
     String nome = getClass().getSimpleName();
     return nome;
+    }
+
+    public String n() {
+        this.getNome();
+        return this.nome;
     }
 
     public float getPeso() {
@@ -75,6 +94,23 @@ public abstract class Animal {
     }
     public void setSuperCondicao(int superCondicao) {
         this.superCondicao = superCondicao;
+    }
+    public String getEspecieAnimal() {
+        return especieAnimal;
+    }
+    public void setEspecieAnimal(String especieAnimal) {
+        this.especieAnimal = especieAnimal;
+    }
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    @Override
+    public String toString() {
+        return n()+" [especieAnimal=" + especieAnimal + ", idade=" + idade + ", membros=" + membros + ", nome=" + nome
+                + ", peso=" + peso + "]";
     }
 
     

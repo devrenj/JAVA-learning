@@ -1,7 +1,12 @@
 package aula12;
-
-public class Reptil extends Animal {
+public abstract class Reptil extends Animal {
+    
     private String corDaEscama;
+
+    public Reptil(float peso, int idade, int membros, String especieAnimal, String nome, String corDaEscama) {
+        super(peso, idade, membros, especieAnimal, nome);
+        this.corDaEscama = corDaEscama;
+    }
 
     @Override
     public void alimentar() {

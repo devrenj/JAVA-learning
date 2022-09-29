@@ -1,6 +1,12 @@
 package aula12;
 
-public class Ave extends Animal {
+public abstract class Ave extends Animal {
+
+    public Ave(float peso, int idade, int membros, String especieAnimal, String nome, String corPena) {
+        super(peso, idade, membros, especieAnimal, nome);
+        this.corPena = corPena;
+    }
+
     private String corPena;
     
     public void fazerNinho() {
@@ -9,17 +15,17 @@ public class Ave extends Animal {
 
     @Override
     public void alimentar() {
-        System.out.println(nome()+" está comendo frutas");    
+        System.out.println(n()+" está comendo frutas");    
     }
 
     @Override
     public void emitirSom() {
-        System.out.println(nome()+" emite: Som de ave");    
+        System.out.println(n()+" emite: Som de ave");    
     }
 
     @Override
     public void locomover() {
-        System.out.println(nome()+" está voando");    
+        System.out.println(n()+" está voando");    
     }
 
     public String getCorPena() {
@@ -29,6 +35,5 @@ public class Ave extends Animal {
     public void setCorPena(String corPena) {
         this.corPena = corPena;
     }
-
     
 }
